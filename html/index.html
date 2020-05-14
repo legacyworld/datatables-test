@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/ju/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/datatables.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdn.datatables.net/v/ju/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/datatables.min.js"></script>
+    <script src="/static/js/vfs_fonts.js"></script>
+    <script src="/static/js/test.js"></script>
+  </head>
+  <body>
+    <button id="delete_row">選択した行を消す</button>
+    <button id="calculate_sum">合計を表示</button>
+    <table id="ms_usage_table" class="table" style="width:100%">
+      <thead>
+        <tr id="table_header">
+          <th class="ms_checkbox"><input type="checkbox" id="all_checks" ></th>
+          <th class="ms_month">月</th>
+          <th class="ms_day">日</th>
+          <th class="ms_type1">種別</th>
+          <th class="ms_boarding_station">利用駅</th>
+          <th class="ms_type2">種別</th>
+          <th class="ms_gettingoff_station">利用駅</th>
+          <th class="ms_balance">残額</th>
+          <th class="ms_diff">差額</th>
+        </tr>
+      </thead>
+      <tbody id="ms_usage_list">
+      </tbody>
+      <tfoot>
+        <tr id="footer">
+          <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+        </tr>
+      </tfoot>
+    </table>
+    <script>
+      initializeDatatables()
+      $('#all_checks').click(all_select)
+      $('#ms_usage_list').click(ind_select)
+      $('#delete_row').click(delete_row)
+      $('#calculate_sum').click(calculate_sum)
+    </script>
+  </body>
+</html>
